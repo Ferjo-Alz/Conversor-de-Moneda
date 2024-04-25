@@ -1,0 +1,55 @@
+let tasasDeCambio = {
+    "USD_ARS": 873, // Dólar estadounidense a peso argentino
+    "ARS_USD": 0.00114639, // Peso argentino a dólar
+    "USD_BRL": 5.15, // Dólar a real brasileño
+    "BRL_USD": 0.194001, // Real brasileño a dólar
+    "USD_COP": 3939.49, // Dólar a peso colombiano
+    "COP_USD": 0.00025571 // Peso colombiano a dólar
+};
+
+function convertirMoneda(monto, tasa) {
+    return monto * tasasDeCambio[tasa];
+}
+
+function menu() {
+    let opcion = prompt("1. Dolar==>Peso Argentino\n2. Peso Argentino==>Dolar\n3. Dolar==>Real Brasileno\n4. Real Brasileno==>Dolar\n5. Dolar==>Peso Colombiano\n6. Peso Colombiano==>Dolar\n7. Salir");
+    let monto, resultado;
+
+    if (opcion != 7) {
+        monto = prompt("Ingrese el monto que desea convertir:");
+    }
+
+    switch(opcion) {
+        case '1':
+            resultado = convertirMoneda(monto, "USD_ARS");
+            alert(`$${monto} USD son $${resultado.toFixed(2)} ARS`);
+            break;
+        case '2':
+            resultado = convertirMoneda(monto, "ARS_USD");
+            alert(`$${monto} ARS son $${resultado.toFixed(2)} USD`);
+            break;
+        case '3':
+            resultado = convertirMoneda(monto, "USD_BRL");
+            alert(`$${monto} USD son R$${resultado.toFixed(2)} BRL`);
+            break;
+        case '4':
+            resultado = convertirMoneda(monto, "BRL_USD");
+            alert(`R$${monto} BRL son $${resultado.toFixed(2)} USD`);
+            break;
+        case '5':
+            resultado = convertirMoneda(monto, "USD_COP");
+            alert(`$${monto} USD son $${resultado.toFixed(2)} COP`);
+            break;
+        case '6':
+            resultado = convertirMoneda(monto, "COP_USD");
+            alert(`$${monto} COP son $${resultado.toFixed(2)} USD`);
+            break;
+        case '7':
+            alert("Saliendo del programa");
+            break;
+        default:
+            alert("Opción inválida");
+    }
+}
+
+menu();
